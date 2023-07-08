@@ -1,6 +1,7 @@
 ﻿#include"DxLib.h"
 #include"block.h"
 #include"game.h"
+#include "cursor.h"
 
 void init(void);
 void update(void);
@@ -36,17 +37,21 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 }
 void init(void)
 {
+	
 	initgame();
 	initblock();
+	initcursor();
 }
 void update(void)
 {
 	updategame();
 	updateblock();
+	updatecursor();
 	draw();
 }
 void draw(void)
 {
 	drawgame();
 	drawblock();
+	drawcursor();
 }

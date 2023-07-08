@@ -14,12 +14,7 @@ void initblock(void)
 	int R;
 	for (int i = 0; i < blocknum; i++)
 	{
-		if (countrow == width)
-		{
-			countrow = 0;
-			nextrow += 1;
-		}
-		countrow += 1;
+		
 		R = GetRand(4) + 1;
 		if (R == 1)
 		{
@@ -50,6 +45,12 @@ void initblock(void)
 		block[i].y = nextrow;
 		block[i].enable = true;
 		block[i].fill = true;
+		countrow += 1;
+		if (countrow == width)
+		{
+			countrow = 0;
+			nextrow += 1;
+		}
 	}
 }
 void updateblock(void)
