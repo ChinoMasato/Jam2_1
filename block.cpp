@@ -85,8 +85,8 @@ void drawblock(void)
 	{
 		if (block[i].enable == true)
 		{
-			DrawBox(block[i].x * blockscale + startmovex, block[i].y * blockscale + startmovey,
-				block[i].x * blockscale + blockscale + startmovex, block[i].y * blockscale + blockscale + startmovey, block[i].c, block[i].fill);
+			DrawBox(block[i].x * blockscale + startx, block[i].y * blockscale + starty,
+				block[i].x * blockscale + blockscale + startx, block[i].y * blockscale + blockscale + starty, block[i].c, block[i].fill);
 		}
 	}
 }
