@@ -8,6 +8,15 @@ int tempy;
 int coolx;
 int cooly;
 int coolch;
+
+//mouse
+int mouse = 0;
+bool mouseflag = true;
+int mousex = 0;
+int mousey = 0;
+bool click = false;
+int mouseenab = 1;
+int mousech = 1;
 void initcursor()
 {
 	cursor.x = 0;
@@ -16,6 +25,47 @@ void initcursor()
 }
 void updatecursor()
 {
+	mouse = GetMouseInput();
+	if (mouseenab == true) 
+	{	
+		if ((mouse & MOUSE_INPUT_LEFT) != 0)
+		{
+			if (click == false)
+			{
+				click = true;
+				GetMousePoint(&mousex, &mousey);
+
+				mousex = (mousex - startx) / blockscale;
+				mousey = (mousey - starty) / blockscale;
+				cursor.x = mousex;
+				cursor.y = mousey;
+			}
+		}
+		else
+		{
+			click = false;
+		}
+	}
+	
+		if (mouse & MOUSE_INPUT_RIGHT&& mousech == 1)
+		{
+			if (mouseenab == 0)
+			{
+				mouseenab = 1;
+				mousech = 0;
+			}
+			else
+			{
+				mouseenab = 0;
+				mousech = 0;
+			}
+		}
+		if ((mouse & MOUSE_INPUT_RIGHT) !=1)
+		{
+			mousech = 1;
+		}
+
+	//キーボード
 	if (CheckHitKey(KEY_INPUT_D) == 1 && coolx == 0)
 	{
 		cursor.x += 1;
@@ -91,5 +141,7 @@ void updatecursor()
 }
 void drawcursor()
 {
+	
 	DrawBox(cursor.x * blockscale + startx, cursor.y * blockscale + starty, cursor.x * blockscale + startx + blockscale, cursor.y * blockscale + starty + blockscale, cursor.c, 0);
+	DrawFormatString(0, 0, cursor.c, "%d",mousech);
 }

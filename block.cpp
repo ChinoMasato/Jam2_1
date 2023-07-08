@@ -1,12 +1,13 @@
 #include"block.h"
+#include "cursor.h"
 
 BLOCK block[width * vertical];
 
-int mouse = 0;
+/*int mouse = 0;
 bool mouseflag = false;
 int mousex = 0;
 int mousey = 0;
-bool click = false;
+bool click = false;*/
 
 int blockimg[5];
 
@@ -61,7 +62,7 @@ void initblock(void)
 }
 void updateblock(void)
 {
-	mouse = GetMouseInput();
+	/*mouse = GetMouseInput();
 	if ((mouse & MOUSE_INPUT_LEFT) != 0)
 	{
 		if (click == false)
@@ -78,7 +79,7 @@ void updateblock(void)
 	if (mouse & MOUSE_INPUT_RIGHT)
 	{
 		mouseflag = false;
-	}
+	}*/
 }
 void drawblock(void)
 {
