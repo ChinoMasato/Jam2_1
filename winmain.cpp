@@ -12,7 +12,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetOutApplicationLogValidFlag(FALSE);//ログ無効
 	//DXライブラリの初期化処理 ここから
 	ChangeWindowMode(TRUE);	//ウィンドウモードにする
-	SetGraphMode(800, 600, 32);	//ウィンドウサイズを設定する
+	SetGraphMode(600, 800, 32);	//ウィンドウサイズを設定する
 	if (DxLib_Init() == -1)		// ＤＸライブラリ初期化処理
 	{
 		return -1;			// エラーが起きたら直ちに終了

@@ -8,6 +8,8 @@ int mousex = 0;
 int mousey = 0;
 bool click = false;
 
+int blockimg[5];
+
 void initblock(void)
 {
 	int countrow = -1;
@@ -31,7 +33,7 @@ void initblock(void)
 		if (R == 2)
 		{
 			block[i].type = type2;
-			block[i].c = GetColor(0, 255, 255);
+			block[i].c = GetColor(255, 255, 0);
 		}
 		if (R == 3)
 		{
@@ -41,18 +43,22 @@ void initblock(void)
 		if (R == 4)
 		{
 			block[i].type = type4;
-			block[i].c = GetColor(255, 255, 0);
+			block[i].c = GetColor(0, 255, 255);
 		}
 		if (R == 5)
 		{
 			block[i].type = type5;
-			block[i].c = GetColor(100, 100, 100);
+			block[i].c = GetColor(255, 0, 0);
 		}
 		block[i].x = countrow;
 		block[i].y = nextrow;
 		block[i].enable = true;
-		block[i].fill = true;
 	}
+	blockimg[0] = LoadGraph("block1.png", true);
+	blockimg[1] = LoadGraph("", true);
+	blockimg[2] = LoadGraph("", true);
+	blockimg[3] = LoadGraph("", true);
+	blockimg[4] = LoadGraph("", true);
 }
 void updateblock(void)
 {
@@ -85,8 +91,30 @@ void drawblock(void)
 	{
 		if (block[i].enable == true)
 		{
-			DrawBox(block[i].x * blockscale + startx, block[i].y * blockscale + starty,
-				block[i].x * blockscale + blockscale + startx, block[i].y * blockscale + blockscale + starty, block[i].c, block[i].fill);
+			SetDrawBlendMode(DX_BLENDMODE_ALPHA,100);
+			DrawBox(block[i].x * blockscale + startx, block[i].y * blockscale + starty, block[i].x * blockscale + blockscale + startx, block[i].y * blockscale + blockscale + starty, block[i].c, true);
+			SetDrawBlendMode(DX_BLENDMODE_NOBLEND,0);
+			DrawBox(block[i].x * blockscale + startx, block[i].y * blockscale + starty, block[i].x * blockscale + blockscale + startx, block[i].y * blockscale + blockscale + starty, block[i].c, false);
+			if (block[i].type == type1)
+			{
+				DrawExtendGraph(block[i].x * blockscale + startx, block[i].y * blockscale + starty, block[i].x * blockscale + blockscale + startx, block[i].y * blockscale + blockscale + starty, blockimg[0], true);
+			}
+			else if (block[i].type == type2)
+			{
+				DrawExtendGraph(block[i].x * blockscale + startx, block[i].y * blockscale + starty, block[i].x * blockscale + blockscale + startx, block[i].y * blockscale + blockscale + starty, blockimg[1], true);
+			}
+			else if (block[i].type == type3)
+			{
+				DrawExtendGraph(block[i].x * blockscale + startx, block[i].y * blockscale + starty, block[i].x * blockscale + blockscale + startx, block[i].y * blockscale + blockscale + starty, blockimg[2], true);
+			}
+			else if (block[i].type == type4)
+			{
+				DrawExtendGraph(block[i].x * blockscale + startx, block[i].y * blockscale + starty, block[i].x * blockscale + blockscale + startx, block[i].y * blockscale + blockscale + starty, blockimg[3], true);
+			}
+			else if (block[i].type == type5)
+			{
+				DrawExtendGraph(block[i].x * blockscale + startx, block[i].y * blockscale + starty, block[i].x * blockscale + blockscale + startx, block[i].y * blockscale + blockscale + starty, blockimg[4], true);
+			}
 		}
 	}
 }

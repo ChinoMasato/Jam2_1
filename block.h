@@ -18,7 +18,6 @@ struct BLOCK
 	double y;
 	int c;
 	bool enable;
-	bool fill;
 };
 
 extern BLOCK block[width * vertical];
