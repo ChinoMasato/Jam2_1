@@ -4,7 +4,7 @@
 
 const int width = 10;
 const int vertical = 8;
-const int blockscale = 25;
+const int blockscale = 12;
 extern int blocknum;
 
 void initgame(void);

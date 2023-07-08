@@ -7,6 +7,8 @@ bool mouseflag = false;
 int mousex = 0;
 int mousey = 0;
 
+bool click = false;
+
 void initblock(void)
 {
 	int countrow = 0;
@@ -55,10 +57,18 @@ void initblock(void)
 void updateblock(void)
 {
 	mouse = GetMouseInput();
-	if (mouse & MOUSE_INPUT_LEFT)
+	if ((mouse & MOUSE_INPUT_LEFT) != 0)
 	{
-		mouseflag = true;
-		GetMousePoint(&mousex, &mousey);
+		if(click==false)
+		{
+			click = true;
+			mouseflag = true;
+			GetMousePoint(&mousex, &mousey);
+		}
+	}
+	else
+	{
+		click = false;
 	}
 	if (mouse & MOUSE_INPUT_RIGHT)
 	{
