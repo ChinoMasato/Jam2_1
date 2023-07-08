@@ -6,20 +6,22 @@ int mouse = 0;
 bool mouseflag = false;
 int mousex = 0;
 int mousey = 0;
+bool click = false;
 
 void initblock(void)
 {
-	int countrow = 0;
+	int countrow = -1;
 	int nextrow = 0;
 	int R;
 	for (int i = 0; i < blocknum; i++)
 	{
+		countrow += 1;
 		if (countrow == width)
 		{
 			countrow = 0;
 			nextrow += 1;
 		}
-		countrow += 1;
+
 		R = GetRand(4) + 1;
 		if (R == 1)
 		{
@@ -55,10 +57,18 @@ void initblock(void)
 void updateblock(void)
 {
 	mouse = GetMouseInput();
-	if (mouse & MOUSE_INPUT_LEFT)
+	if ((mouse & MOUSE_INPUT_LEFT) != 0)
 	{
-		mouseflag = true;
-		GetMousePoint(&mousex, &mousey);
+		if (click == false)
+		{
+			click = true;
+			mouseflag = true;
+			GetMousePoint(&mousex, &mousey);
+		}
+	}
+	else
+	{
+		click = false;
 	}
 	if (mouse & MOUSE_INPUT_RIGHT)
 	{
@@ -75,7 +85,8 @@ void drawblock(void)
 	{
 		if (block[i].enable == true)
 		{
-			DrawBox(block[i].x * blockscale + 100, block[i].y * blockscale + 100, block[i].x * blockscale + 100 + blockscale, block[i].y * blockscale + 100 + blockscale, block[i].c, block[i].fill);
+			DrawBox(block[i].x * blockscale + startmovex, block[i].y * blockscale + startmovey,
+				block[i].x * blockscale + blockscale + startmovex, block[i].y * blockscale + blockscale + startmovey, block[i].c, block[i].fill);
 		}
 	}
 }
