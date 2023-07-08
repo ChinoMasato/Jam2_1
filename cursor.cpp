@@ -11,7 +11,7 @@ int coolch;
 
 //mouse
 int mouse = 0;
-bool mouseflag = true;
+bool mouseflag = true;//使ってません
 int mousex = 0;
 int mousey = 0;
 bool click = false;
@@ -25,6 +25,7 @@ void initcursor()
 }
 void updatecursor()
 {
+	//マウス操作
 	mouse = GetMouseInput();
 	if (mouseenab == true) 
 	{	
@@ -60,7 +61,7 @@ void updatecursor()
 				mousech = 0;
 			}
 		}
-		if ((mouse & MOUSE_INPUT_RIGHT) !=1)
+		if ((mouse & MOUSE_INPUT_RIGHT) !=2)
 		{
 			mousech = 1;
 		}
@@ -143,5 +144,5 @@ void drawcursor()
 {
 	
 	DrawBox(cursor.x * blockscale + startx, cursor.y * blockscale + starty, cursor.x * blockscale + startx + blockscale, cursor.y * blockscale + starty + blockscale, cursor.c, 0);
-	DrawFormatString(0, 0, cursor.c, "%d",mousech);
+	DrawFormatString(0, 0, cursor.c, "%d", mouse & MOUSE_INPUT_LEFT);
 }
