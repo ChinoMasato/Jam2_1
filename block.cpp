@@ -12,7 +12,7 @@ int blockimg[5];
 
 void initblock(void)
 {
-	int countrow = -1;
+	int countrow = 0;
 	int nextrow = 0;
 	int R;
 	for (int i = 0; i < blocknum; i++)

@@ -91,5 +91,5 @@ void updatecursor()
 }
 void drawcursor()
 {
-	DrawBox(cursor.x * blockscale + 100, cursor.y * blockscale + 100, cursor.x * blockscale + 100 + blockscale, cursor.y * blockscale + 100 + blockscale, cursor.c, 0);
+	DrawBox(cursor.x * blockscale + startx, cursor.y * blockscale + starty, cursor.x * blockscale + startx + blockscale, cursor.y * blockscale + starty + blockscale, cursor.c, 0);
 }
