@@ -46,8 +46,8 @@ void initblock(void)
 			block[i].type = type5;
 			block[i].c = GetColor(100, 100, 100);
 		}
-		block[i].x = 100 + (countrow * blockscale);
-		block[i].y = 100 + (nextrow * blockscale);
+		block[i].x = countrow;
+		block[i].y = nextrow;
 		block[i].enable = true;
 		block[i].fill = true;
 	}
@@ -71,11 +71,11 @@ void drawblock(void)
 	{
 		DrawBox(mousex - 25, mousey - 25, mousex + 25, mousey + 25, 0xffffff, TRUE);
 	}
-	for(int i=0;i<blocknum;i++)
+	for (int i = 0; i < blocknum; i++)
 	{
 		if (block[i].enable == true)
 		{
-			DrawBox(block[i].x, block[i].y, block[i].x + blockscale, block[i].y + blockscale, block[i].c, block[i].fill);
+			DrawBox(block[i].x * blockscale + 100, block[i].y * blockscale + 100, block[i].x * blockscale + 100 + blockscale, block[i].y * blockscale + 100 + blockscale, block[i].c, block[i].fill);
 		}
 	}
 }
