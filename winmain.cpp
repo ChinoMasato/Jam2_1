@@ -1,4 +1,10 @@
-﻿#include "DxLib.h"
+﻿#include"DxLib.h"
+#include"block.h"
+#include"game.h"
+
+void init(void);
+void update(void);
+void draw(void);
 
 // プログラムは WinMain から始まります
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -13,12 +19,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	}
 	SetDrawScreen(DX_SCREEN_BACK);	//裏画面を描画対象へ
 
+	init();
 
 	//メイン処理
 	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0) {
-		//ドット描画処理
-		int color = GetColor(255, 255, 255);
-		DrawPixel(400, 300, color);
+
+		update();
+
 		ScreenFlip();		//裏画面と表画面の入替
 		ClearDrawScreen();	//裏画面の描画を全て消去
 	}
@@ -27,4 +34,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	return 0;				// ソフトの終了 
 }
-
+void init(void)
+{
+	initgame();
+	initblock();
+}
+void update(void)
+{
+	updategame();
+	updateblock();
+	draw();
+}
+void draw(void)
+{
+	drawgame();
+	drawblock();
+}
