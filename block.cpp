@@ -46,7 +46,6 @@ void initblock(void)
 		block[i].x = countrow;
 		block[i].y = nextrow;
 		block[i].enable = true;
-		block[i].fill = true;
 		countrow += 1;
 		if (countrow == width)
 		{

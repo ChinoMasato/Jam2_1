@@ -13,7 +13,6 @@ void initcursor()
 	cursor.x = 0;
 	cursor.y = 0;
 	cursor.c = GetColor(0, 255, 0);
-	cursor.fill = 0;
 }
 void updatecursor()
 {
@@ -92,5 +91,5 @@ void updatecursor()
 }
 void drawcursor()
 {
-	DrawBox(cursor.x * blockscale + 100, cursor.y * blockscale + 100, cursor.x * blockscale + 100 + blockscale, cursor.y * blockscale + 100 + blockscale, cursor.c, cursor.fill);
+	DrawBox(cursor.x * blockscale + 100, cursor.y * blockscale + 100, cursor.x * blockscale + 100 + blockscale, cursor.y * blockscale + 100 + blockscale, cursor.c, 0);
 }
