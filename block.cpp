@@ -11,6 +11,7 @@ bool click = false;*/
 
 int blockimg[5];
 
+
 void initblock(void)
 {
 	int countrow = 0;
@@ -47,6 +48,8 @@ void initblock(void)
 		block[i].x = countrow;
 		block[i].y = nextrow;
 		block[i].enable = true;
+		block[i].erase = false;
+		block[i].no = i;
 		countrow += 1;
 		if (countrow == width)
 		{
@@ -80,12 +83,41 @@ void updateblock(void)
 	{
 		mouseflag = false;
 	}*/
+	//カウント関数の実行
+	for (int i = 0; i < width * vertical; i++) {
+		//チェック済みのリセット
+		for (int j = 0; j < width * vertical; j++){
+			block[j].checkedx = block[j].checkedy = block[j].checked = 0;
+		}
+		block[i].countx = block[i].county = block[i].count = 0;
+		//x軸,y軸,連なる同じタイプをカウント
+		block[i].countx = countx(block[i].x, block[i].y, block[i].type, block[i].countx);
+		block[i].county = county(block[i].x, block[i].y, block[i].type, block[i].county);
+		block[i].count = count(block[i].x, block[i].y, block[i].type, block[i].count);
+	}
+	//消す処理
+	for (int i = 0; i < width * vertical; i++)
+	{
+		if (block[i].countx >= erasenum)
+			erasex(block[i].x, block[i].y, block[i].type);
+		if (block[i].county >= erasenum)
+			erasey(block[i].x, block[i].y, block[i].type);
+		if (block[i].count >= erasenum){}
+			//erase(block[i].x, block[i].y, block[i].type);
+	}
+	for (int i = 0; i < width * vertical; i++) {
+		if (block[i].erase == true) {
+			block[i].enable = false;
+		}
+	}
+	DrawFormatString(0, 0, cursor.c, "x%d,y%d,all%d", block[0].countx, block[0].county, block[0].count);
+	
 }
 void drawblock(void)
 {
 	if (mouseflag == true)
 	{
-		DrawBox(mousex - 25, mousey - 25, mousex + 25, mousey + 25, 0xffffff, TRUE);
+		//DrawBox(mousex - 25, mousey - 25, mousex + 25, mousey + 25, 0xffffff, TRUE);
 	}
 	for (int i = 0; i < blocknum; i++)
 	{
@@ -117,4 +149,143 @@ void drawblock(void)
 			}
 		}
 	}
+
+	
+}
+int no;
+int countx(int _x,int _y,BLOCKTYPE _type, int _count)
+{
+	for (int a = 0; a < width * vertical; a++)
+	{
+		if (_x == block[a].x)
+		{
+			if (_y == block[a].y)
+			{
+				no = block[a].no;
+				break;
+			}
+		}
+	}
+	if ((_x < 0 )|| (_x >= width )|| block[no].checkedx ||( block[no].type != _type)|| (block[no].erase == true))
+		return _count;
+	_count++;
+	block[no].checkedx = true;
+
+	_count = countx(_x-1, _y, _type, _count);
+	_count = countx(_x+1, _y, _type, _count);
+}
+
+void erasex(int _x, int _y, BLOCKTYPE _type)
+{
+	for (int a = 0; a < width * vertical; a++)
+	{
+		if (_x == block[a].x)
+		{
+			if (_y == block[a].y)
+			{
+				no = block[a].no;
+				break;
+			}
+		}
+	}
+	if ((_x < 0) || (_x >= width)|| (block[no].type != _type)|| (block[no].erase == true))
+		return;
+
+	block[no].erase = true;
+
+	erasex(_x-1, _y, _type); 
+	erasex(_x+1, _y, _type);
+}
+
+int county(int _x, int _y, BLOCKTYPE _type, int _count)
+{
+	for (int a = 0; a < width * vertical; a++)
+	{
+		if (_x == block[a].x)
+		{
+			if (_y == block[a].y)
+			{
+				no = block[a].no;
+				break;
+			}
+		}
+	}
+	if ((_y < 0) || (_y >= vertical) || block[no].checkedy || (block[no].type != _type) || (block[no].erase == true))
+		return _count;
+	_count++;
+	block[no].checkedy = true;
+
+	_count = county(_x , _y-1, _type, _count);
+	_count = county(_x , _y+1, _type, _count);
+}
+
+
+void erasey(int _x, int _y, BLOCKTYPE _type)
+{
+	for (int a = 0; a < width * vertical; a++)
+	{
+		if (_x == block[a].x)
+		{
+			if (_y == block[a].y)
+			{
+				no = block[a].no;
+				break;
+			}
+		}
+	}
+	if ((_y < 0) || (_y >= vertical) || (block[no].type != _type) || (block[no].erase == true))
+		return;
+	block[no].erase = true;
+
+	erasey(_x, _y-1, _type);
+	erasey(_x, _y+1, _type);
+}
+
+
+int count(int _x, int _y, BLOCKTYPE _type, int _count)
+{
+	for (int a = 0; a < width * vertical; a++)
+	{
+		if (_x == block[a].x)
+		{
+			if (_y == block[a].y)
+			{
+				no = block[a].no;
+				break;
+			}
+		}
+	}
+	if ((_x < 0) || (_x >= width) || (_y < 0) || (_y >= vertical) || block[no].checked || (block[no].type != _type) || (block[no].erase == true))
+		return _count;
+	_count++;
+	block[no].checked = true;
+
+	_count = count(_x - 1, _y, _type, _count);
+	_count = count(_x , _y + 1, _type, _count);
+	_count = count(_x + 1, _y , _type, _count);
+	_count = count(_x, _y - 1, _type, _count);
+}
+
+
+void erase(int _x, int _y, BLOCKTYPE _type)
+{
+	for (int a = 0; a < width * vertical; a++)
+	{
+		if (_x == block[a].x)
+		{
+			if (_y == block[a].y)
+			{
+				no = block[a].no;
+				break;
+			}
+		}
+	}
+	if ((_x < 0) || (_x >= width) || (_y < 0) || (_y >= vertical)|| (block[no].type != _type) || (block[no].erase == true))
+		return;
+	block[no].erase = true;
+
+	erase(_x - 1, _y, _type);
+	erase(_x , _y+ 1, _type); 
+	erase(_x + 1, _y, _type);
+	erase(_x , _y- 1, _type);
 }

@@ -129,6 +129,8 @@ void updatecursor()
 					block[ch.c].x = tempx;
 					block[ch.c].y = tempy; }
 					ch.enable = false;
+
+
 					break;
 				}
 			}
@@ -144,5 +146,4 @@ void drawcursor()
 {
 	
 	DrawBox(cursor.x * blockscale + startx, cursor.y * blockscale + starty, cursor.x * blockscale + startx + blockscale, cursor.y * blockscale + starty + blockscale, cursor.c, 0);
-	DrawFormatString(0, 0, cursor.c, "%d", mouse & MOUSE_INPUT_LEFT);
 }
