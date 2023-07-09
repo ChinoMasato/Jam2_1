@@ -3,7 +3,19 @@
 #include"game.h"
 #include "cursor.h"
 
+enum gamescene
+{
+	title,
+	tutorial,
+	game
+};
+
+int scene = title;
+bool pushenter;
+
 void init(void);
+void updatetitle(void);
+void updatetutorial(void);
 void update(void);
 void draw(void);
 
@@ -23,10 +35,28 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	init();
 
 	//メイン処理
-	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0) {
+	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0)
+	{
+		if (scene == title)
+		{
+			updatetitle();
+		}
+		else if (scene == tutorial)
+		{
+			updatetutorial();
+		}
+		else if (scene == game)
+		{
+			update();
+			if (gameclearflag == true)
+			{
 
-		update();
+			}
+			if (gameoverflag == true)
+			{
 
+			}
+		}
 		ScreenFlip();		//裏画面と表画面の入替
 		ClearDrawScreen();	//裏画面の描画を全て消去
 	}
@@ -37,10 +67,30 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 }
 void init(void)
 {
-	
+	pushenter = false;
 	initgame();
 	initblock();
 	initcursor();
+}
+void updatetitle(void)
+{
+	if (CheckHitKey(KEY_INPUT_RETURN) == 1&& pushenter == false)
+	{
+		pushenter = true;
+		scene = tutorial;
+	}
+}
+void updatetutorial(void)
+{
+	if (CheckHitKey(KEY_INPUT_RETURN) == 1 && pushenter == false)
+	{
+		pushenter = true;
+		scene = game;
+	}
+	else if (CheckHitKey(KEY_INPUT_RETURN) == 0)
+	{
+		pushenter = false;
+	}
 }
 void update(void)
 {

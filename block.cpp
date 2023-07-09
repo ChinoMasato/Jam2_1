@@ -11,7 +11,6 @@ bool click = false;*/
 
 int blockimg[5];
 
-
 void initblock(void)
 {
 	int countrow = 0;
@@ -115,10 +114,7 @@ void updateblock(void)
 }
 void drawblock(void)
 {
-	if (mouseflag == true)
-	{
-		//DrawBox(mousex - 25, mousey - 25, mousex + 25, mousey + 25, 0xffffff, TRUE);
-	}
+
 	for (int i = 0; i < blocknum; i++)
 	{
 		if (block[i].enable == true)
