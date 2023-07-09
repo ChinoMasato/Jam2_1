@@ -1,7 +1,7 @@
 #pragma once
 #include"DxLib.h"
 
-const int windowx = 800;
+const int windowx = 600;
 const int windowy = 800;
 
 const int width = 15;
