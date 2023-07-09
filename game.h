@@ -8,6 +8,8 @@ const int blockscale = 50;
 const int startx = 50;
 const int starty = 300;
 extern int blocknum;
+extern bool gameclearflag;
+extern bool gameoverflag;
 
 void initgame(void);
 void updategame(void);
