@@ -101,8 +101,9 @@ void updateblock(void)
 			erasex(block[i].x, block[i].y, block[i].type);
 		if (block[i].county >= erasenum)
 			erasey(block[i].x, block[i].y, block[i].type);
-		if (block[i].count >= erasenum){}
+		if (block[i].count >= erasenum){
 			//erase(block[i].x, block[i].y, block[i].type);
+		}
 	}
 	for (int i = 0; i < width * vertical; i++) {
 		if (block[i].erase == true) {
