@@ -25,7 +25,7 @@ void updategame(void)
 			{
 				if (block[i].x == block[j].x)
 				{
-					if (block[i].y > block[j].y&&block[j].type != type0)
+					if (block[i].y > block[j].y)
 					{
 						block[j].y++;
 						//break;
