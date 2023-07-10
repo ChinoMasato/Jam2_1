@@ -18,7 +18,7 @@ void initblock(void)
 	int R;
 	for (int i = 0; i < blocknum; i++)
 	{
-		R = GetRand(4) + 1;
+		R = GetRand(7) + 1;
 		if (R == 1)
 		{
 			block[i].type = type1;
@@ -44,11 +44,27 @@ void initblock(void)
 			block[i].type = type5;
 			block[i].c = GetColor(255, 0, 0);
 		}
+		if (R == 6)
+		{
+			block[i].type = type6;
+			block[i].c = GetColor(155, 0, 0);
+		}
+		if (R == 7)
+		{
+			block[i].type = type7;
+			block[i].c = GetColor(0, 155, 0);
+		}
+		if (R == 8)
+		{
+			block[i].type = type8;
+			block[i].c = GetColor(0, 0, 155);
+		}
 		block[i].x = countrow;
 		block[i].y = nextrow;
 		block[i].enable = true;
 		block[i].erase = false;
 		block[i].no = i;
+		block[i].fall = 0;
 		countrow += 1;
 		if (countrow == width)
 		{
@@ -83,7 +99,7 @@ void updateblock(void)
 		mouseflag = false;
 	}*/
 	//カウント関数の実行
-	for (int i = 0; i < width * vertical; i++) {
+	for (int i = 0; i < width * vertical; i++){
 		//チェック済みのリセット
 		for (int j = 0; j < width * vertical; j++){
 			block[j].checkedx = block[j].checkedy = block[j].checked = 0;
@@ -107,10 +123,11 @@ void updateblock(void)
 	}
 	for (int i = 0; i < width * vertical; i++) {
 		if (block[i].erase == true) {
-			block[i].enable = false;
+			//block[i].enable = false;
+			block[i].erase = false;
+			block[i].type = type0;
 		}
 	}
-	DrawFormatString(0, 0, cursor.c, "x%d,y%d,all%d", block[0].countx, block[0].county, block[0].count);
 	
 }
 void drawblock(void)
@@ -118,7 +135,7 @@ void drawblock(void)
 
 	for (int i = 0; i < blocknum; i++)
 	{
-		if (block[i].enable == true)
+		if (block[i].enable == true&&block[i].type!=type0)
 		{
 			SetDrawBlendMode(DX_BLENDMODE_ALPHA,100);
 			DrawBox(block[i].x * blockscale + startx, block[i].y * blockscale + starty, block[i].x * blockscale + blockscale + startx, block[i].y * blockscale + blockscale + starty, block[i].c, true);

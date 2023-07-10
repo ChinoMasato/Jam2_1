@@ -61,6 +61,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		else if (scene == game)
 		{
 			update();
+			
 			if (gameclearflag == true)
 			{
 				DrawExtendGraph(0, 0, windowx, windowy, gameclearimg, true);
@@ -146,9 +147,10 @@ void updatetutorial(void)
 }
 void update(void)
 {
-	updategame();
-	updateblock();
 	updatecursor();
+	updateblock();
+	updategame();
+
 	draw();
 }
 void draw(void)

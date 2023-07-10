@@ -4,11 +4,15 @@
 
 enum BLOCKTYPE
 {
+	type0,
 	type1,
 	type2,
 	type3,
 	type4,
-	type5
+	type5,
+	type6,
+	type7,
+	type8
 };
 
 struct BLOCK
@@ -26,6 +30,7 @@ struct BLOCK
 	int count;
 	int no;
 	int erase;
+	int fall;
 };
 
 extern BLOCK block[width * vertical];
