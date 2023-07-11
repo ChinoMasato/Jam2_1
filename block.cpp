@@ -145,7 +145,7 @@ void drawblock(void)
 	{
 		if (block[i].enable == true&&block[i].type!=type0)
 		{
-			SetDrawBlendMode(DX_BLENDMODE_ALPHA,100);
+			SetDrawBlendMode(DX_BLENDMODE_ALPHA,125);
 			DrawBox(block[i].x * blockscale + startx, block[i].y * blockscale + starty, block[i].x * blockscale + blockscale + startx, block[i].y * blockscale + blockscale + starty, block[i].c, true);
 			SetDrawBlendMode(DX_BLENDMODE_NOBLEND,0);
 			DrawBox(block[i].x * blockscale + startx, block[i].y * blockscale + starty, block[i].x * blockscale + blockscale + startx, block[i].y * blockscale + blockscale + starty, block[i].c, false);
@@ -171,7 +171,7 @@ void drawblock(void)
 			}
 		}
 	}
-	
+
 	DrawFormatString(0, 0, GetColor(255, 255, 255), "%d", dire);
 }
 int no;
