@@ -2,6 +2,7 @@
 #include"block.h"
 #include"game.h"
 #include "cursor.h"
+#include"background.h"
 
 enum gamescene
 {
@@ -14,12 +15,6 @@ enum gamescene
 int scene = title;
 bool pushenter;
 bool tutorialflag = true;
-
-int titleimg;
-int tutorialimg;
-int gameimg;
-int gameclearimg;
-int gameoverimg;
 
 void init(void);
 void updatetitle(void);
@@ -64,7 +59,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			
 			if (gameclearflag == true)
 			{
-				DrawExtendGraph(0, 0, windowx, windowy, gameclearimg, true);
+				drawgameclear();
 				if (CheckHitKey(KEY_INPUT_RETURN) == 1 && pushenter == false)
 				{
 					pushenter = true;
@@ -80,7 +75,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			}
 			if (gameoverflag == true)
 			{
-				DrawExtendGraph(0, 0, windowx, windowy, gameoverimg, true);
+				drawgameover();
 				if (CheckHitKey(KEY_INPUT_RETURN) == 1 && pushenter == false)
 				{
 					pushenter = true;
@@ -105,19 +100,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 }
 void init(void)
 {
-	titleimg = LoadGraph("title.png", true);
-	tutorialimg = LoadGraph("tutorial.png", true);
-	gameimg = LoadGraph("game.png", true);
-	gameclearimg = LoadGraph("gameclear.png", true);
-	gameoverimg = LoadGraph("gameover.png", true);
 	pushenter = false;
 	initgame();
 	initblock();
 	initcursor();
+	initimg();
 }
 void updatetitle(void)
 {
-	DrawExtendGraph(0, 0, windowx, windowy, titleimg, true);
+	drawtitle();
 	if (CheckHitKey(KEY_INPUT_RETURN) == 1 && pushenter == false)
 	{
 		pushenter = true;
@@ -133,7 +124,7 @@ void updatetitle(void)
 }
 void updatetutorial(void)
 {
-	DrawExtendGraph(0, 0, windowx, windowy, tutorialimg, true);
+	drawtutorial();
 	if (CheckHitKey(KEY_INPUT_RETURN) == 1 && pushenter == false)
 	{
 		pushenter = true;
@@ -155,7 +146,7 @@ void update(void)
 }
 void draw(void)
 {
-	DrawExtendGraph(0, 0, windowx, windowy, gameimg, true);
+	drawgameimg();
 	drawgame();
 	drawblock();
 	drawcursor();

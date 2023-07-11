@@ -21,6 +21,9 @@
     <ClCompile Include="cursor.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
+    <ClCompile Include="background.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="block.h">
@@ -30,6 +33,9 @@
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
     <ClInclude Include="cursor.h">
+      <Filter>ヘッダーファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="background.h">
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
   </ItemGroup>
