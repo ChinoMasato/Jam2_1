@@ -15,9 +15,10 @@ int score = 0;
 int tempx2;
 int tempy2;
 int R2;
+int ready = 15;
 void updategame(void)
 {
-	if (dire <= 0) 
+	if (dire <= 0|| ready >0)
 	{
 		for (int i = 0; i < blocknum; i++)
 		{
@@ -76,11 +77,13 @@ void updategame(void)
 					block[i].type = type8;
 					block[i].c = GetColor(0, 0, 155);
 				}
+				if(ready<=0)
 				score += 100;
 				block[i].y = 0;
 			}
 		}
 	}
+	ready--;
 }
 void drawgame(void)
 {

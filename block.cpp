@@ -170,7 +170,7 @@ void drawblock(void)
 			}
 		}
 	}
-
+	
 	DrawFormatString(0, 0, GetColor(255, 255, 255), "%d", dire);
 }
 int no;
