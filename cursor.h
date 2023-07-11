@@ -9,3 +9,4 @@ extern bool click ;
 void initcursor();
 void updatecursor();
 void drawcursor();
+void change();

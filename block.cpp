@@ -100,10 +100,11 @@ void updateblock(void)
 	{
 		mouseflag = false;
 	}*/
+
 	//カウント関数の実行
-	for (int i = 0; i < width * vertical; i++){
+	for (int i = 0; i < width * vertical; i++) {
 		//チェック済みのリセット
-		for (int j = 0; j < width * vertical; j++){
+		for (int j = 0; j < width * vertical; j++) {
 			block[j].checkedx = block[j].checkedy = block[j].checked = 0;
 		}
 		block[i].countx = block[i].county = block[i].count = 0;

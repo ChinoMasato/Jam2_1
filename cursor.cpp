@@ -23,6 +23,7 @@ void initcursor()
 	cursor.y = 0;
 	cursor.c = GetColor(0, 255, 0);
 }
+int clicktime = 0;
 void updatecursor()
 {
 	//É}ÉEÉXëÄçÏ
@@ -95,11 +96,39 @@ void updatecursor()
 	{
 		cooly = 0;
 	}
-
 	//ì¸ÇÍë÷Ç¶èàóù
+	if (CheckHitKey(KEY_INPUT_SPACE) == 1 || click == true)
+	{
+		change();
+	}
+	if (CheckHitKey(KEY_INPUT_SPACE) == 0 && click ==false)
+	{
+		coolch = 0;
+	}
+}
+int dou=0;
+void drawcursor()
+{
+	
+	DrawBox(cursor.x * blockscale + startx, cursor.y * blockscale + starty, cursor.x * blockscale + startx + blockscale, cursor.y * blockscale + starty + blockscale, cursor.c, 0);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 155);
+	if ((ch.enable == true)&&(dire % 10 <= 2))
+	{
+		DrawBox(ch.x * blockscale + startx, ch.y * blockscale + starty, ch.x * blockscale + startx + blockscale, ch.y * blockscale + starty + blockscale, GetColor(255, 255, 0), 1);
+	}
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 155);
+	if (((clicktime > 0) && ((mouse & MOUSE_INPUT_LEFT) == 1)))
+	{
+		dou++;
+	}
+	DrawFormatString(0, 50, GetColor(255, 255, 255), "%d", dou);
+}
+
+void change()
+{
 	if (dire <= 0)
 	{
-		if (CheckHitKey(KEY_INPUT_SPACE) == 1 && ch.enable == false && coolch == 0)
+		if (ch.enable == false && coolch == 0)
 		{
 			for (int i = 0; i < width * vertical; i++)
 			{
@@ -107,6 +136,7 @@ void updatecursor()
 				{
 					if (cursor.y == block[i].y)
 					{
+						ch = block[i];
 						ch.c = i;
 						ch.enable = true;
 						break;
@@ -115,7 +145,7 @@ void updatecursor()
 			}
 			coolch = 1;
 		}
-		if (CheckHitKey(KEY_INPUT_SPACE) == 1 && ch.enable == true && coolch == 0)
+		if (ch.enable == true && coolch == 0)
 		{
 			for (int i = 0; i < width * vertical; i++)
 			{
@@ -131,8 +161,6 @@ void updatecursor()
 						block[ch.c].x = tempx;
 						block[ch.c].y = tempy; }
 						ch.enable = false;
-
-
 						break;
 					}
 				}
@@ -140,13 +168,4 @@ void updatecursor()
 			coolch = 1;
 		}
 	}
-	if (CheckHitKey(KEY_INPUT_SPACE) == 0)
-	{
-		coolch = 0;
-	}
-}
-void drawcursor()
-{
-	
-	DrawBox(cursor.x * blockscale + startx, cursor.y * blockscale + starty, cursor.x * blockscale + startx + blockscale, cursor.y * blockscale + starty + blockscale, cursor.c, 0);
 }
