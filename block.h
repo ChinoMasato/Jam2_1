@@ -12,7 +12,8 @@ enum BLOCKTYPE
 	type5,
 	type6,
 	type7,
-	type8
+	type8,
+	type9
 };
 
 struct BLOCK

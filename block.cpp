@@ -11,7 +11,7 @@ bool click = false;*/
 
 int dire = 0;
 
-int blockimg[5];
+int blockimg[9];
 
 void initblock(void)
 {
@@ -20,46 +20,51 @@ void initblock(void)
 	int R;
 	for (int i = 0; i < blocknum; i++)
 	{
-		R = GetRand(7) + 1;
+		R = GetRand(8) + 1;
 		if (R == 1)
 		{
 			block[i].type = type1;
-			block[i].c = GetColor(255, 255, 255);
+			block[i].c = GetColor(255, 200, 100);
 		}
 		if (R == 2)
 		{
 			block[i].type = type2;
-			block[i].c = GetColor(255, 255, 0);
+			block[i].c = GetColor(255, 125, 0);
 		}
 		if (R == 3)
 		{
 			block[i].type = type3;
-			block[i].c = GetColor(255, 0, 255);
+			block[i].c = GetColor(255, 255, 255);
 		}
 		if (R == 4)
 		{
 			block[i].type = type4;
-			block[i].c = GetColor(0, 255, 255);
+			block[i].c = GetColor(0, 255, 125);
 		}
 		if (R == 5)
 		{
 			block[i].type = type5;
-			block[i].c = GetColor(255, 0, 0);
+			block[i].c = GetColor(0, 175, 50);
 		}
 		if (R == 6)
 		{
 			block[i].type = type6;
-			block[i].c = GetColor(155, 0, 0);
+			block[i].c = GetColor(170, 200, 160);
 		}
 		if (R == 7)
 		{
 			block[i].type = type7;
-			block[i].c = GetColor(0, 155, 0);
+			block[i].c = GetColor(190, 170, 110);
 		}
 		if (R == 8)
 		{
 			block[i].type = type8;
-			block[i].c = GetColor(0, 0, 155);
+			block[i].c = GetColor(180, 255, 180);
+		}
+		if (R == 9)
+		{
+			block[i].type = type9;
+			block[i].c = GetColor(50, 100, 255);
 		}
 		block[i].x = countrow;
 		block[i].y = nextrow;
@@ -79,6 +84,10 @@ void initblock(void)
 	blockimg[2] = LoadGraph("kabu.png", true);
 	blockimg[3] = LoadGraph("sayaendo.png", true);
 	blockimg[4] = LoadGraph("edamame.png", true);
+	blockimg[5] = LoadGraph("nori.png", true);
+	blockimg[6] = LoadGraph("tamanegi.png", true);
+	blockimg[7] = LoadGraph("nashi.png", true);
+	blockimg[8] = LoadGraph("kinme.png", true);
 }
 void updateblock(void)
 {
@@ -132,6 +141,7 @@ void updateblock(void)
 			//block[i].enable = false;
 			block[i].erase = false;
 			block[i].type = type0;
+			blockbreak(block[i]);
 			dire = 60;
 		}
 	}
@@ -168,6 +178,22 @@ void drawblock(void)
 			else if (block[i].type == type5)
 			{
 				DrawExtendGraph(block[i].x * blockscale + startx, block[i].y * blockscale + starty, block[i].x * blockscale + blockscale + startx, block[i].y * blockscale + blockscale + starty, blockimg[4], true);
+			}
+			else if (block[i].type == type6)
+			{
+				DrawExtendGraph(block[i].x * blockscale + startx, block[i].y * blockscale + starty, block[i].x * blockscale + blockscale + startx, block[i].y * blockscale + blockscale + starty, blockimg[5], true);
+			}
+			else if (block[i].type == type7)
+			{
+				DrawExtendGraph(block[i].x * blockscale + startx, block[i].y * blockscale + starty, block[i].x * blockscale + blockscale + startx, block[i].y * blockscale + blockscale + starty, blockimg[6], true);
+			}
+			else if (block[i].type == type8)
+			{
+				DrawExtendGraph(block[i].x * blockscale + startx, block[i].y * blockscale + starty, block[i].x * blockscale + blockscale + startx, block[i].y * blockscale + blockscale + starty, blockimg[7], true);
+			}
+			else if (block[i].type == type9)
+			{
+				DrawExtendGraph(block[i].x * blockscale + startx, block[i].y * blockscale + starty, block[i].x * blockscale + blockscale + startx, block[i].y * blockscale + blockscale + starty, blockimg[8], true);
 			}
 		}
 	}

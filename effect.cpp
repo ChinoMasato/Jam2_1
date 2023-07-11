@@ -34,7 +34,7 @@ void draweffect(void)
 		if (eff[i].enable == true)
 		{
 			int no = eff[i].animeno;
-			DrawExtendGraph(eff[i].x * blockscale + startx, eff[i].y * blockscale + starty, eff[i].x * blockscale + blockscale + startx, eff[i].y * blockscale + blockscale + starty, img[no], true);
+			DrawExtendGraph(eff[i].x * blockscale + startx - 10, eff[i].y * blockscale + starty - 10, eff[i].x * blockscale + blockscale + startx + 10, eff[i].y * blockscale + blockscale + starty + 10, img[no], true);
 		}
 	}
 }
