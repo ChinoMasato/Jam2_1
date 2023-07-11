@@ -44,3 +44,4 @@ int count(int _x, int _y, BLOCKTYPE _type, int _count);
 void erasex(int _x, int _y, BLOCKTYPE _type);
 void erasey(int _x, int _y, BLOCKTYPE _type);
 void erase(int _x, int _y, BLOCKTYPE _type);
+void blockbreak(BLOCK blo);

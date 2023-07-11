@@ -105,6 +105,7 @@ void init(void)
 	initblock();
 	initcursor();
 	initimg();
+	initeffect();
 }
 void updatetitle(void)
 {
@@ -141,7 +142,7 @@ void update(void)
 	updatecursor();
 	updateblock();
 	updategame();
-
+	updateeffect();
 	draw();
 }
 void draw(void)
@@ -150,4 +151,5 @@ void draw(void)
 	drawgame();
 	drawblock();
 	drawcursor();
+	draweffect();
 }

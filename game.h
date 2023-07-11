@@ -1,5 +1,6 @@
 #pragma once
 #include"DxLib.h"
+#include"effect.h"
 
 const int windowx = 600;
 const int windowy = 800;

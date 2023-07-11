@@ -22,15 +22,21 @@ void updategame(void)
 	{
 		for (int i = 0; i < blocknum; i++)
 		{
+			
 			if (block[i].type == type0)
 			{
+				
 				for (int j = 0; j < blocknum; j++)
 				{
+					
 					if (block[i].x == block[j].x)
 					{
+						blockbreak(block[i]);
 						if (block[i].y > block[j].y)
 						{
+							
 							block[j].y++;
+							
 							//break;
 						}
 					}

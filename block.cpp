@@ -311,3 +311,17 @@ void erase(int _x, int _y, BLOCKTYPE _type)
 	erase(_x + 1, _y, _type);
 	erase(_x , _y- 1, _type);
 }
+void blockbreak(BLOCK blo)
+{
+	for (int i = 0; i < effectnum; i++)
+	{
+		if (eff[i].enable == false)
+		{
+			eff[i].enable = true;
+			eff[i].x = blo.x;
+			eff[i].y = blo.y;
+			eff[i].animeno = 0;
+			break;
+		}
+	}
+}
