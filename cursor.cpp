@@ -154,16 +154,12 @@ void change()
 				{
 					if (cursor.y == block[i].y)
 					{
-						if (block[ch.c].x != block[i].x) {
-							if (block[ch.c].y != block[i].y)
-								break;
-						}
-								tempx = block[i].x;
-								tempy = block[i].y;
-								block[i].x = block[ch.c].x;
-								block[i].y = block[ch.c].y;
-								block[ch.c].x = tempx;
-								block[ch.c].y = tempy;
+						tempx = block[i].x;
+						tempy = block[i].y;
+						block[i].x = block[ch.c].x;
+						block[i].y = block[ch.c].y;
+						block[ch.c].x = tempx;
+						block[ch.c].y = tempy;
 						ch.enable = false;
 						break;
 					}
