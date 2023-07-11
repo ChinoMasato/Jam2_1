@@ -9,6 +9,8 @@ int mousex = 0;
 int mousey = 0;
 bool click = false;*/
 
+int dire = 0;
+
 int blockimg[5];
 
 void initblock(void)
@@ -117,17 +119,22 @@ void updateblock(void)
 			erasex(block[i].x, block[i].y, block[i].type);
 		if (block[i].county >= erasenum)
 			erasey(block[i].x, block[i].y, block[i].type);
-		if (block[i].count >= erasenum){
+		if (block[i].count >= erasenum)
+		{
 			//erase(block[i].x, block[i].y, block[i].type);
 		}
 	}
-	for (int i = 0; i < width * vertical; i++) {
-		if (block[i].erase == true) {
+	for (int i = 0; i < width * vertical; i++) 
+	{
+		if (block[i].erase == true) 
+		{
 			//block[i].enable = false;
 			block[i].erase = false;
 			block[i].type = type0;
+			dire = 60;
 		}
 	}
+	dire--;
 	
 }
 void drawblock(void)
@@ -164,7 +171,7 @@ void drawblock(void)
 		}
 	}
 
-	
+	DrawFormatString(0, 0, GetColor(255, 255, 255), "%d", dire);
 }
 int no;
 int countx(int _x,int _y,BLOCKTYPE _type, int _count)
@@ -180,7 +187,7 @@ int countx(int _x,int _y,BLOCKTYPE _type, int _count)
 			}
 		}
 	}
-	if ((_x < 0 )|| (_x >= width )|| block[no].checkedx ||( block[no].type != _type)|| (block[no].erase == true))
+	if ((_x < 0 )|| (_x >= width )|| block[no].checkedx ||( block[no].type != _type) || (_type == type0) || (block[no].erase == true))
 		return _count;
 	_count++;
 	block[no].checkedx = true;
@@ -202,7 +209,7 @@ void erasex(int _x, int _y, BLOCKTYPE _type)
 			}
 		}
 	}
-	if ((_x < 0) || (_x >= width)|| (block[no].type != _type)|| (block[no].erase == true))
+	if ((_x < 0) || (_x >= width)|| (block[no].type != _type)|| (_type ==type0)|| (block[no].erase == true))
 		return;
 
 	block[no].erase = true;
@@ -224,7 +231,7 @@ int county(int _x, int _y, BLOCKTYPE _type, int _count)
 			}
 		}
 	}
-	if ((_y < 0) || (_y >= vertical) || block[no].checkedy || (block[no].type != _type) || (block[no].erase == true))
+	if ((_y < 0) || (_y >= vertical) || block[no].checkedy || (_type == type0) || (block[no].type != _type)|| (block[no].erase == true))
 		return _count;
 	_count++;
 	block[no].checkedy = true;
@@ -247,7 +254,7 @@ void erasey(int _x, int _y, BLOCKTYPE _type)
 			}
 		}
 	}
-	if ((_y < 0) || (_y >= vertical) || (block[no].type != _type) || (block[no].erase == true))
+	if ((_y < 0) || (_y >= vertical) || (block[no].type != _type) || (_type == type0) || (block[no].erase == true))
 		return;
 	block[no].erase = true;
 
@@ -269,7 +276,7 @@ int count(int _x, int _y, BLOCKTYPE _type, int _count)
 			}
 		}
 	}
-	if ((_x < 0) || (_x >= width) || (_y < 0) || (_y >= vertical) || block[no].checked || (block[no].type != _type) || (block[no].erase == true))
+	if ((_x < 0) || (_x >= width) || (_y < 0) || (_y >= vertical) || (_type == type0) || block[no].checked || (block[no].type != _type) || (block[no].erase == true))
 		return _count;
 	_count++;
 	block[no].checked = true;
@@ -294,7 +301,7 @@ void erase(int _x, int _y, BLOCKTYPE _type)
 			}
 		}
 	}
-	if ((_x < 0) || (_x >= width) || (_y < 0) || (_y >= vertical)|| (block[no].type != _type) || (block[no].erase == true))
+	if ((_x < 0) || (_x >= width) || (_y < 0) || (_y >= vertical) || (_type == type0) || (block[no].type != _type) || (block[no].erase == true))
 		return;
 	block[no].erase = true;
 

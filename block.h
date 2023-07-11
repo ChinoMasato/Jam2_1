@@ -34,6 +34,7 @@ struct BLOCK
 };
 
 extern BLOCK block[width * vertical];
+extern int dire;
 void initblock(void);
 void updateblock(void);
 void drawblock(void);

@@ -97,45 +97,48 @@ void updatecursor()
 	}
 
 	//“ü‚ê‘Ö‚¦ˆ—
-	if (CheckHitKey(KEY_INPUT_SPACE) == 1 && ch.enable == false && coolch == 0)
+	if (dire <= 0)
 	{
-		for (int i = 0; i < width*vertical; i++)
+		if (CheckHitKey(KEY_INPUT_SPACE) == 1 && ch.enable == false && coolch == 0)
 		{
-			if (cursor.x == block[i].x)
+			for (int i = 0; i < width * vertical; i++)
 			{
-				if (cursor.y == block[i].y)
+				if (cursor.x == block[i].x)
 				{
-					ch.c = i;
-					ch.enable = true;
-					break;
+					if (cursor.y == block[i].y)
+					{
+						ch.c = i;
+						ch.enable = true;
+						break;
+					}
 				}
 			}
+			coolch = 1;
 		}
-		coolch = 1;
-	}
-	if (CheckHitKey(KEY_INPUT_SPACE) == 1 && ch.enable == true && coolch == 0)
-	{
-		for (int i = 0; i < width * vertical; i++)
+		if (CheckHitKey(KEY_INPUT_SPACE) == 1 && ch.enable == true && coolch == 0)
 		{
-			if (cursor.x == block[i].x)
+			for (int i = 0; i < width * vertical; i++)
 			{
-				if (cursor.y == block[i].y)
+				if (cursor.x == block[i].x)
 				{
-					//change(cel[ch.no], cel[i]);
-					{tempx = block[i].x;
-					tempy = block[i].y;
-					block[i].x = block[ch.c].x;
-					block[i].y = block[ch.c].y;
-					block[ch.c].x = tempx;
-					block[ch.c].y = tempy; }
-					ch.enable = false;
+					if (cursor.y == block[i].y)
+					{
+						//change(cel[ch.no], cel[i]);
+						{tempx = block[i].x;
+						tempy = block[i].y;
+						block[i].x = block[ch.c].x;
+						block[i].y = block[ch.c].y;
+						block[ch.c].x = tempx;
+						block[ch.c].y = tempy; }
+						ch.enable = false;
 
 
-					break;
+						break;
+					}
 				}
 			}
+			coolch = 1;
 		}
-		coolch = 1;
 	}
 	if (CheckHitKey(KEY_INPUT_SPACE) == 0)
 	{
