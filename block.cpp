@@ -73,10 +73,10 @@ void initblock(void)
 		}
 	}
 	blockimg[0] = LoadGraph("block1.png", true);
-	blockimg[1] = LoadGraph("", true);
-	blockimg[2] = LoadGraph("", true);
-	blockimg[3] = LoadGraph("", true);
-	blockimg[4] = LoadGraph("", true);
+	blockimg[1] = LoadGraph("kinoko.png", true);
+	blockimg[2] = LoadGraph("kabu.png", true);
+	blockimg[3] = LoadGraph("endo.png", true);
+	blockimg[4] = LoadGraph("edamaem.png", true);
 }
 void updateblock(void)
 {
