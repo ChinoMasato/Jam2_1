@@ -5,13 +5,13 @@ int img[10];
 
 void initeffect(void)
 {
-	img[0] = LoadGraph("effect_1.png", true);
-	img[1] = LoadGraph("effect_2.png", true);
-	img[2] = LoadGraph("effect_3.png", true);
-	img[3] = LoadGraph("effect_4.png", true);
-	img[4] = LoadGraph("effect_5.png", true);
-	img[5] = LoadGraph("effect_6.png", true);
-	img[6] = LoadGraph("effect_7.png", true);
+	img[0] = LoadGraph("effeect_1.png", true);
+	img[1] = LoadGraph("effeect_2.png", true);
+	img[2] = LoadGraph("effeect_3.png", true);
+	img[3] = LoadGraph("effeect_4.png", true);
+	img[4] = LoadGraph("effeect_5.png", true);
+	img[5] = LoadGraph("effeect_6.png", true);
+	img[6] = LoadGraph("effeect_7.png", true);
 }
 void updateeffect(void)
 {

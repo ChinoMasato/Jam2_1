@@ -24,6 +24,9 @@
     <ClCompile Include="background.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
+    <ClCompile Include="effect.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="block.h">
@@ -36,6 +39,9 @@
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
     <ClInclude Include="background.h">
+      <Filter>ヘッダーファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="effect.h">
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
   </ItemGroup>
