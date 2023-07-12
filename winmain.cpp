@@ -148,7 +148,7 @@ void update(void)
 }
 void draw(void)
 {
-	//drawcursor();
+	drawcursor();
 	if (alpha > 0)
 	{
 		drawgameimg();
