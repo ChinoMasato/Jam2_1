@@ -36,6 +36,10 @@ struct BLOCK
 
 extern BLOCK block[width * vertical];
 extern int dire;
+extern int score;
+extern int scoreimg;
+extern int gorl;
+
 void initblock(void);
 void updateblock(void);
 void drawblock(void);

@@ -5,17 +5,19 @@ int blocknum;
 bool gameclearflag;
 bool gameoverflag;
 
+int tempx2;
+int tempy2;
+int R2;
+int ready = 15;
+
+
 void initgame(void)
 {
 	blocknum = width * vertical;
 	gameclearflag = false;
 	gameoverflag = false;
+	
 }
-int score = 0;
-int tempx2;
-int tempy2;
-int R2;
-int ready = 15;
 void updategame(void)
 {
 	if (dire <= 0|| ready >0)
@@ -88,8 +90,7 @@ void updategame(void)
 					block[i].type = type9;
 					block[i].c = GetColor(50, 100, 255);
 				}
-				if(ready<=0)
-				score += 100;
+				if(ready<=0){}
 				block[i].y = 0;
 			}
 		}
@@ -98,5 +99,6 @@ void updategame(void)
 }
 void drawgame(void)
 {
-	DrawFormatString(0, 20, GetColor(255, 255, 255), "%d", score);
+	DrawExtendGraph(0, 0, 32, 32, scoreimg, true);
+	DrawExtendFormatString(32, 0,1.5,1.5, GetColor(0,0,0), "%d/%d", score,gorl);
 }

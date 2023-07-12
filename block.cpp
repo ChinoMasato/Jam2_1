@@ -10,11 +10,15 @@ int mousey = 0;
 bool click = false;*/
 
 int dire = 0;
+int score = 0;
+int scoreimg;
+int gorl = 100;
 
 int blockimg[9];
 
 void initblock(void)
 {
+
 	int countrow = 0;
 	int nextrow = 0;
 	int R;
@@ -88,6 +92,9 @@ void initblock(void)
 	blockimg[6] = LoadGraph("tamanegi.png", true);
 	blockimg[7] = LoadGraph("nashi.png", true);
 	blockimg[8] = LoadGraph("kinme.png", true);
+
+
+	scoreimg = blockimg[1];
 }
 void updateblock(void)
 {
@@ -197,8 +204,6 @@ void drawblock(void)
 			}
 		}
 	}
-
-	DrawFormatString(0, 0, GetColor(255, 255, 255), "%d", dire);
 }
 int no;
 int countx(int _x,int _y,BLOCKTYPE _type, int _count)
