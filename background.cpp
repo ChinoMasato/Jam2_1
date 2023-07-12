@@ -9,7 +9,7 @@ int gameoverimg;
 void initimg(void)
 {
 	titleimg = LoadGraph("title.png", true);
-	tutorialimg = LoadGraph("tutorial.png", true);
+	tutorialimg = LoadGraph("title.png", true);
 	gameimg = LoadGraph("game.png", true);
 	gameclearimg = LoadGraph("gameclear.png", true);
 	gameoverimg = LoadGraph("gameover.png", true);

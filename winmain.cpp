@@ -15,6 +15,7 @@ enum gamescene
 int scene = title;
 bool pushenter;
 bool tutorialflag = true;
+int alpha = 255;
 
 void init(void);
 void updatetitle(void);
@@ -56,7 +57,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		else if (scene == game)
 		{
 			update();
-			
+
 			if (gameclearflag == true)
 			{
 				drawgameclear();
@@ -147,9 +148,24 @@ void update(void)
 }
 void draw(void)
 {
-	drawgameimg();
-	drawgame();
-	drawblock();
-	drawcursor();
-	draweffect();
+	//drawcursor();
+	if (alpha > 0)
+	{
+		drawgameimg();
+		drawgame();
+		drawblock();
+		drawcursor();
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha);
+		DrawExtendGraph(0, 0, windowx, windowy, tutorialimg, true);
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 0);
+		alpha-=3;
+	}
+	else
+	{
+		drawgameimg();
+		drawgame();
+		drawblock();
+		drawcursor();
+		draweffect();
+	}
 }

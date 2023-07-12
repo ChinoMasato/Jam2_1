@@ -2,6 +2,8 @@
 #include"DxLib.h"
 #include"game.h"
 
+extern int tutorialimg;
+
 void initimg(void);
 void drawtitle(void);
 void drawtutorial(void);
