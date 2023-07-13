@@ -1,6 +1,7 @@
 #include"block.h"
 #include "cursor.h"
 #include"score.h"
+#include"background.h"
 
 BLOCK block[width * vertical];
 
@@ -144,6 +145,7 @@ void updateblock(void)
 			if (block[i].type == score[j].type&&score[j].count<score[j].gorl&&ready<0&&score[j].enable==true)
 			{
 				score[j].count++;
+				draweat = true;
 			}
 			block[i].erase = false;
 			block[i].type = type0;
