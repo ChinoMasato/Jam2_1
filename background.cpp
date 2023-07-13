@@ -19,6 +19,7 @@ void initimg(void)
 	Cimg[0] = LoadGraph("C1.png", true);
 	Cimg[1] = LoadGraph("C2.png", true);
 	draweat = false;
+	eattime = 500;
 }
 void drawtitle(void)
 {
@@ -45,7 +46,6 @@ void drawC(void)
 	if (draweat == false)
 	{
 		DrawExtendGraph(windowx / 2, windowy / 10, windowx, windowy/1.75, Cimg[0], true);
-		eattime = 500;
 	}
 	else if (draweat == true)
 	{
@@ -58,5 +58,6 @@ void drawC(void)
 	if (eattime <= 0)
 	{
 		draweat = false;
+		eattime = 500;
 	}
 }
