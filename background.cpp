@@ -46,7 +46,6 @@ void drawC(void)
 	{
 		DrawExtendGraph(windowx / 2, windowy / 10, windowx, windowy/1.75, Cimg[0], true);
 		eattime = 500;
-		draweat = true;
 	}
 	else if (draweat == true)
 	{
