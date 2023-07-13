@@ -9,6 +9,9 @@ int coolx;
 int cooly;
 int coolch;
 
+int chengelimit = 100;
+int chengelimits = chengelimit;
+
 //mouse
 int mouse = 0;
 int mousex = 0;
@@ -105,6 +108,9 @@ void updatecursor()
 	{
 		coolch = 0;
 	}
+
+	if (chengelimit == 0&& gameoverflag ==false)
+		gameoverflag = true;
 }
 int dou=0;
 void drawcursor()
@@ -117,6 +123,7 @@ void drawcursor()
 		DrawBox(ch.x * blockscale + startx, ch.y * blockscale + starty, ch.x * blockscale + startx + blockscale, ch.y * blockscale + starty + blockscale, GetColor(255, 255, 0), 1);
 	}
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 155);
+	DrawExtendFormatString(startx,0, 1.8, 1.8, GetColor(0,0,0), "%d/%d", chengelimit, chengelimits);
 }
 
 void change()
@@ -155,6 +162,7 @@ void change()
 						block[ch.c].x = tempx;
 						block[ch.c].y = tempy;
 						ch.enable = false;
+						chengelimit--;
 						break;
 					}
 				}
