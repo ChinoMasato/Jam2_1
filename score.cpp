@@ -4,7 +4,7 @@
 
 SCORE score[9];
 int un[9];
-int gorlnum = 3;//–Ú•WŒÂ”
+int gorlnum = 30;//–Ú•WŒÂ”
 int kazu = 2;//–Ú•Wí—Ş
 void initscore()
 {
@@ -56,8 +56,7 @@ void updatescore()
 	}
 	if (oknum == kazu)
 	{
-	gameclearflag = true;
-		
+	gameclearflag = true;		
 	}
 }
 int Scount = 0;
