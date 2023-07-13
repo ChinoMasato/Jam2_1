@@ -99,6 +99,4 @@ void updategame(void)
 }
 void drawgame(void)
 {
-	DrawExtendGraph(0, 0, 32, 32, scoreimg, true);
-	DrawExtendFormatString(32, 0,1.5,1.5, GetColor(0,0,0), "%d/%d", score,gorl);
 }

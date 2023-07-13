@@ -3,6 +3,7 @@
 #include"game.h"
 #include "cursor.h"
 #include"background.h"
+#include"score.h"
 
 enum gamescene
 {
@@ -104,6 +105,7 @@ void init(void)
 	pushenter = false;
 	initgame();
 	initblock();
+	initscore();
 	initcursor();
 	initimg();
 	initeffect();
@@ -142,6 +144,7 @@ void update(void)
 {
 	updatecursor();
 	updateblock();
+	updatescore();
 	updategame();
 	updateeffect();
 	draw();
@@ -155,6 +158,7 @@ void draw(void)
 		drawgame();
 		drawblock();
 		drawcursor();
+		drawscore();
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha);
 		DrawExtendGraph(0, 0, windowx, windowy, tutorialimg, true);
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 0);
@@ -166,6 +170,7 @@ void draw(void)
 		drawgame();
 		drawblock();
 		drawcursor();
+		drawscore();
 		draweffect();
 	}
 }

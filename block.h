@@ -30,15 +30,13 @@ struct BLOCK
 	int county;
 	int count;
 	int no;
-	int erase;
+	bool erase;
 	int fall;
 };
 
 extern BLOCK block[width * vertical];
+extern int blockimg[9];
 extern int dire;
-extern int score;
-extern int scoreimg;
-extern int gorl;
 
 void initblock(void);
 void updateblock(void);

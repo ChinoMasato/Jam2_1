@@ -110,19 +110,14 @@ void updatecursor()
 int dou=0;
 void drawcursor()
 {
-	
+
 	DrawBox(cursor.x * blockscale + startx, cursor.y * blockscale + starty, cursor.x * blockscale + startx + blockscale, cursor.y * blockscale + starty + blockscale, cursor.c, 0);
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 155);
-	if ((ch.enable == true)&&(dire % 10 <= 2))
+	if ((ch.enable == true) && (dire % 10 <= 2))
 	{
 		DrawBox(ch.x * blockscale + startx, ch.y * blockscale + starty, ch.x * blockscale + startx + blockscale, ch.y * blockscale + starty + blockscale, GetColor(255, 255, 0), 1);
 	}
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 155);
-	if (((clicktime > 0) && ((mouse & MOUSE_INPUT_LEFT) == 1)))
-	{
-		dou++;
-	}
-	DrawFormatString(0, 50, GetColor(255, 255, 255), "%d", dou);
 }
 
 void change()

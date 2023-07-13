@@ -1,5 +1,6 @@
 #include"block.h"
 #include "cursor.h"
+#include"score.h"
 
 BLOCK block[width * vertical];
 
@@ -10,10 +11,6 @@ int mousey = 0;
 bool click = false;*/
 
 int dire = 0;
-int score = 0;
-int scoreimg;
-int gorl = 100;
-
 int blockimg[9];
 
 void initblock(void)
@@ -92,9 +89,6 @@ void initblock(void)
 	blockimg[6] = LoadGraph("tamanegi.png", true);
 	blockimg[7] = LoadGraph("nashi.png", true);
 	blockimg[8] = LoadGraph("kinme.png", true);
-
-
-	scoreimg = blockimg[1];
 }
 void updateblock(void)
 {
@@ -146,6 +140,11 @@ void updateblock(void)
 		if (block[i].erase == true) 
 		{
 			//block[i].enable = false;
+			for(int j=0;j<9;j++)
+			if (block[i].type == score[j].type&&score[j].count<score[j].gorl)
+			{
+				score[j].count++;
+			}
 			block[i].erase = false;
 			block[i].type = type0;
 			blockbreak(block[i]);
