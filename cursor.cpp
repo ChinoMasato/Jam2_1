@@ -11,7 +11,6 @@ int coolch;
 
 //mouse
 int mouse = 0;
-bool mouseflag = true;//Žg‚Á‚Ä‚Ü‚¹‚ñ
 int mousex = 0;
 int mousey = 0;
 bool click = false;

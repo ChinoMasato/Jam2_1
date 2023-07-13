@@ -141,7 +141,7 @@ void updateblock(void)
 		{
 			//block[i].enable = false;
 			for(int j=0;j<9;j++)
-			if (block[i].type == score[j].type&&score[j].count<score[j].gorl)
+			if (block[i].type == score[j].type&&score[j].count<score[j].gorl&&ready<0&&score[j].enable==true)
 			{
 				score[j].count++;
 			}

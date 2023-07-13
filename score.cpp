@@ -3,7 +3,9 @@
 #include "block.h"
 
 SCORE score[9];
-int un;
+int un[9];
+int gorlnum = 3;//–Ú•WŒÂ”
+int kazu = 2;//–Ú•Wí—Ş
 void initscore()
 {
 	for (int i = 0; i < 9; i++)
@@ -28,13 +30,19 @@ void initscore()
 		if ((i + 1) == 9)
 			score[i].type = type9;
 		score[i].img = blockimg[i];
-		score[i].gorl = 30;
+		score[i].gorl = gorlnum;
 		score[i].enable = false;
 		score[i].c = GetColor(0, 0, 0);
 	}
-
-	score[un].enable = true;
+	for (int i = 0; i < kazu; i++)
+	{
+		do {
+			un[i] = GetRand(8);
+		} while (score[un[i]].enable == true);
+		score[un[i]].enable = true;
+	}
 }
+int oknum = 0;
 void updatescore()
 {
 	for (int i = 0; i < 9; i++)
@@ -43,7 +51,13 @@ void updatescore()
 		{
 			score[i].ok = true;
 			score[i].c = GetColor(255, 0, 0);
+			oknum++;
 		}
+	}
+	if (oknum == kazu)
+	{
+	gameclearflag = true;
+		
 	}
 }
 int Scount = 0;
@@ -55,7 +69,7 @@ void drawscore()
 		if(score[i].enable==true)
 		{
 			DrawExtendGraph(0, Scount * 32, 32, Scount * 32+32, score[i].img, true);
-			DrawExtendFormatString(32, Scount * 32, 1.7, 1.7, GetColor(0, 0, 0), "%d/%d", score[i].count, score[i].gorl);
+			DrawExtendFormatString(32, Scount * 32, 1.7, 1.7, score[i].c, "%d/%d", score[i].count, score[i].gorl);
 			Scount++;
 		}
 	}

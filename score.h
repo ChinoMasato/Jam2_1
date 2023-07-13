@@ -13,6 +13,8 @@ struct SCORE
 };
 
 extern SCORE score[9];
+extern int kazu;//–Ú•WŽí—Þ
+extern int gorlnum;
 
 void initscore();
 void updatescore();

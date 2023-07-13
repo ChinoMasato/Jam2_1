@@ -11,6 +11,7 @@ const int startx = 50;
 const int starty = 300;
 const int blockscale = (windowx - startx ) / width - (startx / width);
 const int erasenum = 3;
+extern int ready;
 extern int blocknum;
 extern bool gameclearflag;
 extern bool gameoverflag;

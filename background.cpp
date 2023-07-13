@@ -36,6 +36,8 @@ void drawgameimg(void)
 void drawgameclear(void)
 {
 	DrawExtendGraph(0, 0, windowx, windowy, gameclearimg, true);
+	DrawBox(0, 0, 100, 100, GetColor(255, 255, 255), true);
+
 }
 void drawgameover(void)
 {
