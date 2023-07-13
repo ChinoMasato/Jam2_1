@@ -155,6 +155,7 @@ void draw(void)
 	if (alpha > 0)
 	{
 		drawgameimg();
+		DrawExtendGraph(windowx / 2, windowy / 10, windowx, windowy / 1.75, Cimg[0], true);
 		drawgame();
 		drawblock();
 		drawcursor();
@@ -167,6 +168,7 @@ void draw(void)
 	else
 	{
 		drawgameimg();
+		drawC();
 		drawgame();
 		drawblock();
 		drawcursor();
