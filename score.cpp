@@ -59,17 +59,17 @@ void updatescore()
 	gameclearflag = true;		
 	}
 }
-int Scount = 0;
+int Scount;
 void drawscore()
 {
-	Scount = 0;
+	Scount = 8;
 	for(int i = 0;i<9;i++)
 	{
 		if(score[i].enable==true)
 		{
-			DrawExtendGraph(0, Scount * 32, 32, Scount * 32+32, score[i].img, true);
-			DrawExtendFormatString(32, Scount * 32, 1.7, 1.7, score[i].c, "%d/%d", score[i].count, score[i].gorl);
-			Scount++;
+			DrawExtendGraph(startx, Scount * 32, 32+ startx, Scount * 32+ 32, score[i].img, true);
+			DrawExtendFormatString(32 + startx, Scount * 32, 1.8, 1.8, score[i].c, "%d/%d", score[i].count, score[i].gorl);
+			Scount--;
 		}
 	}
 }
