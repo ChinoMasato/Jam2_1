@@ -62,15 +62,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			if (gameclearflag == true)
 			{
 				drawgameclear();
-				if (CheckHitKey(KEY_INPUT_RETURN) == 1 && pushenter == false)
+				if ((CheckHitKey(KEY_INPUT_RETURN) == 1 || (mouse & MOUSE_INPUT_LEFT) == 1) && pushenter == false)
 				{
 					pushenter = true;
-					if (tutorialflag == true)
+					if (tutorialflag == false)
 					{
 						scene = start;
 					}
 				}
-				else if (CheckHitKey(KEY_INPUT_RETURN) == 0)
+				else if (CheckHitKey(KEY_INPUT_RETURN) == 0 || (mouse & MOUSE_INPUT_LEFT) == 0)
 				{
 					pushenter = false;
 				}
@@ -78,15 +78,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			if (gameoverflag == true)
 			{
 				drawgameover();
-				if (CheckHitKey(KEY_INPUT_RETURN) == 1 && pushenter == false)
+				if ((CheckHitKey(KEY_INPUT_RETURN) == 1 || (mouse & MOUSE_INPUT_LEFT) == 1 )&& pushenter == false)
 				{
 					pushenter = true;
-					if (tutorialflag == true)
+					if (tutorialflag == false)
 					{
 						scene = start;
 					}
 				}
-				else if (CheckHitKey(KEY_INPUT_RETURN) == 0)
+				else if (CheckHitKey(KEY_INPUT_RETURN) == 0|| (mouse & MOUSE_INPUT_LEFT) == 0)
 				{
 					pushenter = false;
 				}
@@ -102,6 +102,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 }
 void init(void)
 {
+	alpha = 255;
 	pushenter = false;
 	initgame();
 	initblock();

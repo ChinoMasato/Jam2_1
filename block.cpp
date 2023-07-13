@@ -16,7 +16,7 @@ int blockimg[9];
 
 void initblock(void)
 {
-
+	dire = 0;
 	int countrow = 0;
 	int nextrow = 0;
 	int R;

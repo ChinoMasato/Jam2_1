@@ -4,10 +4,12 @@
 
 SCORE score[9];
 int un[9];
-int gorlnum = 30;//–Ú•WŒÂ”
+int gorlnum = 3;//–Ú•WŒÂ”
 int kazu = 2;//–Ú•Wí—Ş
+int oknum = 0;
 void initscore()
 {
+	oknum = 0;
 	for (int i = 0; i < 9; i++)
 	{
 		score[i].count = 0;
@@ -42,7 +44,6 @@ void initscore()
 		score[un[i]].enable = true;
 	}
 }
-int oknum = 0;
 void updatescore()
 {
 	for (int i = 0; i < 9; i++)

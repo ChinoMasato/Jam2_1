@@ -21,6 +21,7 @@ int mouseenab = 1;
 int mousech = 1;
 void initcursor()
 {
+	chengelimit = 100;
 	cursor.x = 0;
 	cursor.y = 0;
 	cursor.c = GetColor(0, 255, 0);
@@ -109,10 +110,9 @@ void updatecursor()
 		coolch = 0;
 	}
 
-	if (chengelimit == 0&& gameoverflag ==false)
+	if (chengelimit == 0&& gameoverflag ==false &&gameclearflag==false)
 		gameoverflag = true;
 }
-int dou=0;
 void drawcursor()
 {
 

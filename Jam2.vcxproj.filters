@@ -24,8 +24,10 @@
     <ClCompile Include="background.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
-    <ClCompile Include="effect.cpp" />
     <ClCompile Include="score.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="effect.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -42,8 +44,10 @@
     <ClInclude Include="background.h">
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
-    <ClInclude Include="effect.h" />
     <ClInclude Include="score.h">
+      <Filter>ヘッダーファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="effect.h">
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
   </ItemGroup>

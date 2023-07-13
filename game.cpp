@@ -13,6 +13,7 @@ int ready = 15;
 
 void initgame(void)
 {
+	ready = 15;
 	blocknum = width * vertical;
 	gameclearflag = false;
 	gameoverflag = false;
