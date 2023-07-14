@@ -5,7 +5,7 @@
 
 SCORE score[9];
 int un[9];
-int gorlnum = 3;//–Ú•WŒÂ”
+int gorlnum = 30;//–Ú•WŒÂ”
 int kazu = 2;//–Ú•Wí—Ş
 int oknum = 0;
 void initscore()
