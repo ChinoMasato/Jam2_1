@@ -8,6 +8,7 @@ int gameoverimg;
 int Cimg[2];
 bool draweat;
 int eattime;
+int blockoutse;
 
 void initimg(void)
 {
@@ -20,6 +21,7 @@ void initimg(void)
 	Cimg[1] = LoadGraph("C2.png", true);
 	draweat = false;
 	eattime = 500;
+	blockoutse = LoadSoundMem("maou_se_system10.mp3");
 }
 void drawtitle(void)
 {
@@ -53,6 +55,10 @@ void drawC(void)
 		if(eattime>0)
 		{
 			eattime--;
+		}
+		if (eattime == 450)
+		{
+			PlaySoundMem(blockoutse, DX_PLAYTYPE_BACK);
 		}
 	}
 	if (eattime <= 0)
