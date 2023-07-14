@@ -14,6 +14,7 @@ int coolch;
 int chengelimit = 100;
 int chengelimits = chengelimit;
 
+
 //mouse
 int mouse = 0;
 int mousex = 0;
@@ -27,6 +28,7 @@ void initcursor()
 	cursor.x = 0;
 	cursor.y = 0;
 	cursor.c = GetColor(0, 255, 0);
+
 }
 int clicktime = 0;
 void updatecursor()
@@ -112,8 +114,6 @@ void updatecursor()
 		coolch = 0;
 	}
 
-	if (chengelimit == 0&& gameoverflag ==false &&gameclearflag==false)
-		gameoverflag = true;
 }
 void drawcursor()
 {

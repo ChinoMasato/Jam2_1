@@ -6,6 +6,8 @@ extern bool mouseflag ;
 extern int mousex ;
 extern int mousey ;
 extern bool click ;
+extern int chengelimit;
+extern int chengelimits;
 void initcursor();
 void updatecursor();
 void drawcursor();

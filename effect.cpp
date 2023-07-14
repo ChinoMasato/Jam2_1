@@ -5,6 +5,8 @@ int img[10];
 int blockse;
 int startse;
 
+
+
 void initeffect(void)
 {
 	img[0] = LoadGraph("effeect_1.png", true);

@@ -1,10 +1,11 @@
 #include "DxLib.h"
 #include "score.h"
 #include "block.h"
+#include "cursor.h"
 
 SCORE score[9];
 int un[9];
-int gorlnum = 30;//–Ú•WŒÂ”
+int gorlnum = 3;//–Ú•WŒÂ”
 int kazu = 2;//–Ú•Wí—Ş
 int oknum = 0;
 void initscore()
@@ -61,6 +62,9 @@ void updatescore()
 	{
 	gameclearflag = true;		
 	}
+
+	if (chengelimit == 0 && gameoverflag == false && gameclearflag == false)
+		gameoverflag = true;
 }
 int Scount;
 void drawscore()
