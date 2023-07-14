@@ -104,7 +104,7 @@ void init(void)
 	initcursor();
 	initimg();
 	initeffect();
-	PlayMusic("", DX_PLAYTYPE_LOOP);
+	PlayMusic("under_the_tree.mp3", DX_PLAYTYPE_LOOP);
 }
 void updatetitle(void)
 {
@@ -131,6 +131,7 @@ void updatetutorial(void)
 	drawtutorial();
 	if (CheckHitKey(KEY_INPUT_RETURN) == 1 && pushenter == false)
 	{
+		PlayMusic("There_are_days_like_that.mp3", DX_PLAYTYPE_LOOP);
 		pushenter = true;
 		scene = game;
 	}
