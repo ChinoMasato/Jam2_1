@@ -2,6 +2,7 @@
 
 effect eff[effectnum];
 int img[10];
+int blockse;
 
 void initeffect(void)
 {
@@ -12,6 +13,7 @@ void initeffect(void)
 	img[4] = LoadGraph("effeect_5.png", true);
 	img[5] = LoadGraph("effeect_6.png", true);
 	img[6] = LoadGraph("effeect_7.png", true);
+	blockse = LoadSoundMem("maou_se_system29.mp3");
 }
 void updateeffect(void)
 {

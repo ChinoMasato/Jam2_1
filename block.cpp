@@ -345,15 +345,19 @@ void erase(int _x, int _y, BLOCKTYPE _type)
 }
 void blockbreak(BLOCK blo)
 {
-	for (int i = 0; i < effectnum; i++)
+	if(ready<0)
 	{
-		if (eff[i].enable == false)
+		for (int i = 0; i < effectnum; i++)
 		{
-			eff[i].enable = true;
-			eff[i].x = blo.x;
-			eff[i].y = blo.y;
-			eff[i].animeno = 0;
-			break;
+			if (eff[i].enable == false)
+			{
+				eff[i].enable = true;
+				eff[i].x = blo.x;
+				eff[i].y = blo.y;
+				eff[i].animeno = 0;
+				PlaySoundMem(blockse, DX_PLAYTYPE_BACK);
+				break;
+			}
 		}
 	}
 }

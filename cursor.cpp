@@ -1,5 +1,7 @@
 #include "cursor.h"
 #include "block.h"
+#include"score.h"
+
 
 BLOCK cursor;
 BLOCK ch;
@@ -21,7 +23,7 @@ int mouseenab = 1;
 int mousech = 1;
 void initcursor()
 {
-	chengelimit = 100;
+	chengelimit = 50;
 	cursor.x = 0;
 	cursor.y = 0;
 	cursor.c = GetColor(0, 255, 0);
@@ -115,7 +117,10 @@ void updatecursor()
 }
 void drawcursor()
 {
-
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 155);	
+	DrawBox(startx * 2 - 10, Scount * 32-5, startx * 2 + blockscale * 5, 32 * 9+5 , GetColor(0, 255, 155), 1);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 155);
+	DrawBox(startx * 2 - 10, Scount * 32 - 5, startx * 2 + blockscale * 5, 32 * 9 + 5, GetColor(0, 155, 100), 0);
 	DrawBox(cursor.x * blockscale + startx, cursor.y * blockscale + starty, cursor.x * blockscale + startx + blockscale, cursor.y * blockscale + starty + blockscale, cursor.c, 0);
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 155);
 	if ((ch.enable == true) && (dire % 10 <= 2))
@@ -123,7 +128,7 @@ void drawcursor()
 		DrawBox(ch.x * blockscale + startx, ch.y * blockscale + starty, ch.x * blockscale + startx + blockscale, ch.y * blockscale + starty + blockscale, GetColor(255, 255, 0), 1);
 	}
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 155);
-	DrawExtendFormatString(startx,0, 1.8, 1.8, GetColor(0,0,0), "%d/%d", chengelimit, chengelimits);
+	DrawExtendFormatString(startx*2,32*8, 1.8, 1.8, GetColor(0,0,0), "Žè”:%d", chengelimit);
 }
 
 void change()

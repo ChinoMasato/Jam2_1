@@ -13,6 +13,7 @@ struct effect
 	bool enable = false;
 };
 extern effect eff[effectnum];
+extern int blockse;
 
 void initeffect(void);
 void updateeffect(void);
