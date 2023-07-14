@@ -62,15 +62,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			if (gameclearflag == true)
 			{
 				drawgameclear();
-				if ((CheckHitKey(KEY_INPUT_RETURN) == 1 || click == 1) && pushenter == false)
+				if ((CheckHitKey(KEY_INPUT_RETURN) == 1 || click == 0) && pushenter == false)
 				{
 					pushenter = true;
-					if (tutorialflag == false)
-					{
-						scene = start;
-					}
+					scene = start;
 				}
-				else if (CheckHitKey(KEY_INPUT_RETURN) == 0 || click == 0)
+				else if (CheckHitKey(KEY_INPUT_RETURN) == 0 || click == 1)
 				{
 					pushenter = false;
 				}
@@ -78,15 +75,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			if (gameoverflag == true)
 			{
 				drawgameover();
-				if ((CheckHitKey(KEY_INPUT_RETURN) == 1 || click == 1 )&& pushenter == false)
+				if ((CheckHitKey(KEY_INPUT_RETURN) == 1 || click == 1) && pushenter == false)
 				{
 					pushenter = true;
-					if (tutorialflag == false)
-					{
-						scene = start;
-					}
+					scene = start;
 				}
-				else if (CheckHitKey(KEY_INPUT_RETURN) == 0|| (mouse & MOUSE_INPUT_LEFT) == 0)
+				else if (CheckHitKey(KEY_INPUT_RETURN) == 0 || (mouse & MOUSE_INPUT_LEFT) == 0)
 				{
 					pushenter = false;
 				}
@@ -126,6 +120,10 @@ void updatetitle(void)
 			scene = game;
 		}
 	}
+	else if (CheckHitKey(KEY_INPUT_RETURN) == 0)
+	{
+		pushenter = false;
+	}
 }
 void updatetutorial(void)
 {
@@ -133,7 +131,6 @@ void updatetutorial(void)
 	if (CheckHitKey(KEY_INPUT_RETURN) == 1 && pushenter == false)
 	{
 		pushenter = true;
-		tutorialflag = false;
 		scene = game;
 	}
 	else if (CheckHitKey(KEY_INPUT_RETURN) == 0)
@@ -162,9 +159,12 @@ void draw(void)
 		drawcursor();
 		drawscore();
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha);
-		DrawExtendGraph(0, 0, windowx, windowy, tutorialimg, true);
+		if (tutorialflag == true)
+		{
+			DrawExtendGraph(0, 0, windowx, windowy, tutorialimg, true);
+		}
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 0);
-		alpha-=3;
+		alpha -= 3;
 	}
 	else
 	{
