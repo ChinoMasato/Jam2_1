@@ -18,6 +18,9 @@ bool pushenter;
 bool tutorialflag = true;
 int alpha = 255;
 
+bool bgmc=false;
+bool bgmo=false;
+
 void init(void);
 void updatetitle(void);
 void updatetutorial(void);
@@ -61,10 +64,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 			if (gameclearflag == true)
 			{
+				if (bgmc == false)
+				{
+					PlayMusic("tousen.mp3", DX_PLAYTYPE_LOOP);
+					bgmc = true;
+				}
 				drawgameclear();
 				if (CheckHitKey(KEY_INPUT_RETURN) == 1 && pushenter == false)
 				{
 					pushenter = true;
+					bgmc = false;
 					scene = start;
 				}
 				else if (CheckHitKey(KEY_INPUT_RETURN) == 0 )
@@ -74,10 +83,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			}
 			if (gameoverflag == true)
 			{
+				if (bgmo == false)
+				{
+					PlayMusic("zannense.mp3", DX_PLAYTYPE_LOOP);
+					bgmo = true;
+				}
 				drawgameover();
 				if ((CheckHitKey(KEY_INPUT_RETURN) == 1) && pushenter == false)
 				{
 					pushenter = true;
+					bgmo = false;
 					scene = start;
 				}
 				else if (CheckHitKey(KEY_INPUT_RETURN) == 0)
