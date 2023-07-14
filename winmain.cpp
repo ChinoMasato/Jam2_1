@@ -66,7 +66,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			{
 				if (bgmc == false)
 				{
-					PlayMusic("tousen.mp3", DX_PLAYTYPE_LOOP);
+					PlayMusic("tousen.mp3", DX_PLAYTYPE_BACK);
 					bgmc = true;
 				}
 				drawgameclear();
@@ -85,7 +85,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			{
 				if (bgmo == false)
 				{
-					PlayMusic("zannense.mp3", DX_PLAYTYPE_LOOP);
+					PlayMusic("zannense.mp3", DX_PLAYTYPE_BACK);
 					bgmo = true;
 				}
 				drawgameover();
@@ -130,6 +130,7 @@ void updatetitle(void)
 		if (tutorialflag == true)
 		{
 			scene = tutorial;
+			PlaySoundMem(startse, DX_PLAYTYPE_BACK);
 		}
 		else if (tutorialflag == false)
 		{
@@ -149,6 +150,7 @@ void updatetutorial(void)
 		PlayMusic("There_are_days_like_that.mp3", DX_PLAYTYPE_LOOP);
 		pushenter = true;
 		scene = game;
+		PlaySoundMem(startse, DX_PLAYTYPE_BACK);
 	}
 	else if (CheckHitKey(KEY_INPUT_RETURN) == 0)
 	{
