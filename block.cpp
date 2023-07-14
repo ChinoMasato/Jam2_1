@@ -14,6 +14,8 @@ bool click = false;*/
 int dire = 0;
 int blockimg[9];
 
+int blockoutse;
+
 void initblock(void)
 {
 	dire = 0;
@@ -90,6 +92,7 @@ void initblock(void)
 	blockimg[6] = LoadGraph("tamanegi.png", true);
 	blockimg[7] = LoadGraph("nashi.png", true);
 	blockimg[8] = LoadGraph("kinme.png", true);
+	blockoutse = LoadSoundMem("maou_se_system34.mp3");
 }
 void updateblock(void)
 {

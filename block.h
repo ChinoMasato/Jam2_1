@@ -37,6 +37,7 @@ struct BLOCK
 extern BLOCK block[width * vertical];
 extern int blockimg[9];
 extern int dire;
+extern int blockoutse;
 
 void initblock(void);
 void updateblock(void);

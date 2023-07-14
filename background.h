@@ -2,6 +2,7 @@
 #include"DxLib.h"
 #include"game.h"
 
+extern int titleimg;
 extern int tutorialimg;
 extern bool draweat;
 extern int Cimg[2];
