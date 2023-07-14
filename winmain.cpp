@@ -62,25 +62,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		{
 			update();
 
-			if (gameclearflag == true)
-			{
-				if (bgmc == false)
-				{
-					PlayMusic("tousen.mp3", DX_PLAYTYPE_LOOP);
-					bgmc = true;
-				}
-				drawgameclear();
-				if (CheckHitKey(KEY_INPUT_RETURN) == 1 && pushenter == false)
-				{
-					pushenter = true;
-					bgmc = false;
-					scene = start;
-				}
-				else if (CheckHitKey(KEY_INPUT_RETURN) == 0 )
-				{
-					pushenter = false;
-				}
-			}
 			if (gameoverflag == true)
 			{
 				if (bgmo == false)
@@ -93,6 +74,25 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				{
 					pushenter = true;
 					bgmo = false;
+					scene = start;
+				}
+				else if (CheckHitKey(KEY_INPUT_RETURN) == 0)
+				{
+					pushenter = false;
+				}
+			}
+			if (gameclearflag == true)
+			{
+				if (bgmc == false)
+				{
+					PlayMusic("tousen.mp3", DX_PLAYTYPE_LOOP);
+					bgmc = true;
+				}
+				drawgameclear();
+				if (CheckHitKey(KEY_INPUT_RETURN) == 1 && pushenter == false)
+				{
+					pushenter = true;
+					bgmc = false;
 					scene = start;
 				}
 				else if (CheckHitKey(KEY_INPUT_RETURN) == 0)
