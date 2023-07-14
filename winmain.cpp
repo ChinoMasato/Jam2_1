@@ -119,7 +119,7 @@ void init(void)
 	initcursor();
 	initimg();
 	initeffect();
-	PlayMusic("under_the_tree.mp3", DX_PLAYTYPE_LOOP);
+	PlayMusic("Loquet_Park.mp3", DX_PLAYTYPE_LOOP);
 }
 void updatetitle(void)
 {
