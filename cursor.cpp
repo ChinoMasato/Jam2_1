@@ -118,9 +118,9 @@ void updatecursor()
 void drawcursor()
 {
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 155);	
-	DrawBox(startx * 2 - 10, Scount * 32-5, startx * 2 + blockscale * 5, 32 * 9+5 , GetColor(0, 255, 155), 1);
+	DrawBox(startx * 2 - 10, Scount * 32-5, startx * 2 + blockscale * 5+30, 32 * 9+5 , GetColor(0, 255, 155), 1);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 155);
-	DrawBox(startx * 2 - 10, Scount * 32 - 5, startx * 2 + blockscale * 5, 32 * 9 + 5, GetColor(0, 155, 100), 0);
+	DrawBox(startx * 2 - 10, Scount * 32 - 5, startx * 2 + blockscale * 5 + 30, 32 * 9 + 5, GetColor(0, 155, 100), 0);
 	DrawBox(cursor.x * blockscale + startx, cursor.y * blockscale + starty, cursor.x * blockscale + startx + blockscale, cursor.y * blockscale + starty + blockscale, cursor.c, 0);
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 155);
 	if ((ch.enable == true) && (dire % 10 <= 2))

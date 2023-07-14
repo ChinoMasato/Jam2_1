@@ -14,6 +14,7 @@ struct effect
 };
 extern effect eff[effectnum];
 extern int blockse;
+extern int startse;
 
 void initeffect(void);
 void updateeffect(void);
