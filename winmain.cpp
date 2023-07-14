@@ -104,6 +104,7 @@ void init(void)
 	initcursor();
 	initimg();
 	initeffect();
+	PlayMusic("", DX_PLAYTYPE_LOOP);
 }
 void updatetitle(void)
 {
